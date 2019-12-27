@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         Jump();
+        OnSideWall();
     }
     private void FixedUpdate()
     {
@@ -54,6 +55,12 @@ public class PlayerMovement : MonoBehaviour
         }
         else
             return false;
-
+    }
+    bool OnSideWall(){
+        Vector3 v3 = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        if (Physics.Raycast(v3, Vector3.right, margin)){
+            return true;
+        }
+        else    return false;
     }
 }
